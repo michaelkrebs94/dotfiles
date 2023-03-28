@@ -1,0 +1,52 @@
+Host srv
+	HostName srv.mk29.de
+	Port 223
+	User root
+
+Host openair
+	HostName v52938.php-friends.de
+	User root
+
+Host nxt
+	HostName nxtbackend.mk29.de
+	User root
+	IdentityFile /Users/michaelkrebs/Seafile/Dokumente/Server/SSH/id_nxt
+
+Host filebox
+	HostName fileserver.mk29.de
+	User root
+
+Host fam
+	HostName familybox.mk29.de
+	User root
+	IdentityFile /Users/michaelkrebs/Seafile/Dokumente/Server/SSH/id_familybox
+
+Host mon
+	HostName v42233.php-friends.de
+	User root
+
+
+Host dev
+	HostName v47192.php-friends.de
+	User root
+
+Host pi
+	HostName pi
+	User root
+
+Host router
+	HostName guac.mk29.de
+	User root
+	Port 2022
+
+Host router-int
+	HostName 192.168.1.1
+	User root
+	StrictHostKeyChecking no
+	GlobalKnownHostsFile /dev/null 
+	UserKnownHostsFile /dev/null
+
+Host *
+   AddKeysToAgent yes
+   UseKeychain yes
+   IdentityFile ~/.ssh/id_rsa
