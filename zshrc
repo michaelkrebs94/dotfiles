@@ -33,7 +33,6 @@ alias gh-not='yarn --cwd ~/GIT/scripts/github-notifications dev'
 setopt rcquotes
 alias prunebranches='git fetch -p && for branch in $(git for-each-ref --format ''%(refname) %(upstream:track)'' refs/heads | awk ''$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}''); do git branch -D $branch; done'
 
-do_unalias k8s_root_shell
 function k8s_root_shell (){
     kpexec --kubeconfig $KUBECONFIG -it -T $1 -- /bin/bash
 }

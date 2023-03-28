@@ -1,5 +1,8 @@
 - clean: ["~"]
 
 - link:
-      ~/.zshrc: zshrc
-      ~/.p10k.zsh: p10k.zsh
+      ~/.zshrc:
+            path: zshrc
+            if: ! -f ~/.zshrc
+      ~/.p10k.zsh: 
+            path: p10k.zsh
