@@ -3,6 +3,3 @@
 - link:
       ~/.zshrc: zshrc
       ~/.p10k.zsh: p10k.zsh
-
-- shell:
-      - chsh -s $(which zsh)
