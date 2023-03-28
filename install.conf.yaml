@@ -1,11 +1,8 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
-    ~/.gitconfig: gitconfig
-    ~/.ssh/config:
-        path: ssh/config
-        create: true
-    ~/.zprofile: zprofile
-    ~/.zshrc: zshrc
+      ~/.zshrc: zshrc
+      ~/.p10k.zsh: p10k.zsh
 
-
+- shell:
+      - chsh -s $(which zsh)

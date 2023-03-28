@@ -1,7 +1,0 @@
-[user]
-	name = Michael Krebs
-	email = michael.krebs@mk29.de
-[alias]
-	pushf = push --force-with-lease
-[pull]
-	rebase = true
