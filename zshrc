@@ -57,5 +57,7 @@ fi
 autoload -Uz compinit && compinit
 
 # custom other zshrc files
+setopt nullglob
 subshells=(~/.zshrc_*)
 [[ -e "${subshells[0]}" ]] || for f in $subshells; do source $f; done
+unsetopt nullglob
