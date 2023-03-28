@@ -57,4 +57,5 @@ fi
 autoload -Uz compinit && compinit
 
 # custom other zshrc files
-for f in ~/.zshrc_*; do source $f; done
+subshells=(~/.zshrc_*)
+[[ -e "${subshells[0]}" ]] || for f in $subshells; do source $f; done
