@@ -6,19 +6,44 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+source ~/.zgenom/zgenom.zsh
+# Generate zgen init.sh if it doesn't exist
+if ! zgenom saved; then
+    zgenom ohmyzsh
+
+    # Plugins
+    zgenom ohmyzsh plugins/git
+    zgenom ohmyzsh plugins/github
+    zgenom ohmyzsh plugins/sudo
+    zgenom ohmyzsh plugins/command-not-found
+    zgenom ohmyzsh plugins/kubectl
+    zgenom ohmyzsh plugins/docker
+    zgenom ohmyzsh plugins/docker-compose
+    zgenom load zsh-users/zsh-autosuggestions
+    zgenom load denolfe/git-it-on.zsh
+    zgenom load caarlos0/zsh-mkc
+
+    # These 2 must be in this order
+    zgenom load zsh-users/zsh-syntax-highlighting
+
+    # Completion-only repos
+    zgenom load zsh-users/zsh-completions src
+
+    # Theme
+    zgenom load romkatv/powerlevel10k powerlevel10k
+
+    # Generate init.sh
+    zgenom save
+fi
+
+
 export ZSH_DISABLE_COMPFIX=true
 
 [[ ! -f /opt/homebrew/bin/brew ]] || alias brew='/opt/homebrew/bin/brew'
 [[ ! -f /opt/homebrew/bin/brew ]] || export PATH="/opt/homebrew/bin:$PATH"
 export PATH=/usr/local/opt/gnu-getopt/bin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/coreutils/libexec/gnubin:/Users/irk8fe/GIT/scripts:$PATH
 
-# Path to your oh-my-zsh installation.
-export ZSH="${HOME}/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
-
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/.p10k.zsh
 
 alias sshns='ssh -q -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null'
 alias scpns='scp -q -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null'
@@ -70,6 +95,4 @@ completions=(
 for f in $completions; do [[ ! -f $f ]] || source $f; done
 
 unsetopt nullglob
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/irk8fe/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
+
