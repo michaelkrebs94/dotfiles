@@ -60,4 +60,16 @@ autoload -Uz compinit && compinit
 setopt nullglob
 subshells=(~/.zshrc_*)
 [[ -e "${subshells[0]}" ]] || for f in $subshells; do source $f; done
+
+# code completions for homebrew modules
+completions=(
+  "/opt/homebrew/etc/bash_completion.d/az"
+  "/opt/homebrew/etc/bash_completion.d/dotnet"
+  "/opt/homebrew/etc/bash_completion.d/npm"
+  )
+for f in $completions; do [[ ! -f $f ]] || source $f; done
+
 unsetopt nullglob
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/irk8fe/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

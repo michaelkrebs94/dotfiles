@@ -3,6 +3,5 @@
 - link:
       ~/.zshrc:
             path: zshrc
-            if: ! -f ~/.zshrc
       ~/.p10k.zsh: 
             path: p10k.zsh
